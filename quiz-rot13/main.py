@@ -21,6 +21,7 @@ import re
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 j_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
         autoescape = True)
+
 user_val = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
 password_val = re.compile(r"^.{3,20}$")
 email_val = re.compile(r"^[\S]+@[\S]+.[\S]+$")
@@ -101,4 +102,4 @@ class Welcome(Handler):
         username = self.request.get('username')
         self.render("welcome.html", username = username)
 
-app = webapp2.WSGIApplication([('/exercises/quiz-rot13', Rot13), ('/exercises/signup', Signup),
+app = webapp2.WSGIApplication([('/exercises/quiz-rot13', Rot13), ('/exercises/signup', Signup)],debug=True)

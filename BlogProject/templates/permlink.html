@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IT Backend Blog</title>
+</head>
+
+<style>
+
+	body{
+		font-family: sans-serif;
+		width: 1200px;
+		margin: 0 auto;
+		padding: 10px;
+	}
+
+	h1 {
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	
+	h3 {
+		display: inline-block;
+		margin-bottom: 0px;
+		width: 500px;
+	}
+
+	span {
+		margin-left: 600px;
+	}
+
+	hr {
+		margin-top: -2px;
+		height: 3px;
+	}
+
+	pre {
+		display: block;
+		margin: auto;
+		width: 1000px;
+		text-align: justify;
+	}
+
+</style>
+
+<body>
+
+	<h1>IT Backend Blog</h1>
+	<h3>{{ lastpost.subject }}</h3>
+	<span>{{ lastpost.created }}</span>
+	<hr>
+	<pre>{{ lastpost.content }}</pre>
+
+</body>
+</html>

@@ -49,7 +49,7 @@ class FormHandler(Handler):
 
         else:
             error = "we need both a Subject and a content!"
-            self.render("fhandler.html", error = error)
+            self.render("fhandler.html", subject = subject, content = content, error = error)
 
 class Permanlink(Handler):
     def get(self, id_element):

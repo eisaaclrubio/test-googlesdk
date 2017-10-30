@@ -2,53 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link type="text/css" rel="stylesheet" href="/static/main.css" />
 	<title>IT Backend Blog</title>
 </head>
 
-<style>
-
-	body{
-		font-family: sans-serif;
-		width: 1200px;
-		margin: 0 auto;
-		padding: 10px;
-	}
-
-	h1 {
-		text-align: center;
-		margin-bottom: 15px;
-	}
-	
-	h3 {
-		display: inline-block;
-		margin-bottom: 0px;
-		width: 500px;
-	}
-
-	span {
-		margin-left: 600px;
-	}
-
-	hr {
-		margin-top: -2px;
-		height: 3px;
-	}
-
-	pre {
-		display: block;
-		margin: auto;
-		width: 1000px;
-		text-align: justify;
-	}
-
-</style>
-
 <body>
 
-	<h1>IT Backend Blog</h1>
+	<h1><a href="/blog">IT Backend Blog</a></h1>
 	{% for post in posts %}
 	<h3>{{ post.subject }}</h3>
-	<span>{{ post.created }}</span>
+	<span>{{ post.created.strftime("%b %d, %Y") }}</span>
 	<hr>
 	<pre>{{ post.content }}</pre>
 	{% endfor %}

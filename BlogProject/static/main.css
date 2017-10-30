@@ -1,0 +1,39 @@
+body{
+	font-family: sans-serif;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+h3 {
+	display: inline-block;
+	margin-bottom: 0px;
+	width: 650px;
+}
+
+span {
+	margin-left: 400px;
+	color: #999;
+}
+
+hr {
+	margin-top: -2px;
+	height: 3px;
+}
+
+pre {
+	display: block;
+	margin: auto;
+	width: 1000px;
+	text-align: justify;
+}

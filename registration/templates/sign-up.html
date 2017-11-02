@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Unit 2 User Signup</title>
+    <style type="text/css">
+        span{
+            width: 150px;
+            text-align: right;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Signup</h1>
+    <form method="post">
+        <span>Username</span>
+        <input type="text" name="username" value="{{ username }}">
+        {% if user_frase == True %}
+        <span style="color:red;text-align:left;width:auto">That's not a valid username.</span>
+        {% elif user_frase == False and user_frase2 == True %}
+        <span style="color:red;text-align:left;width:auto">Username already used.</span>
+        {% endif %}
+        <br>
+        <span>Password</span>
+        <input type="password" name="password" value="">
+        {% if pass_frase == True %}
+        <span style="color:red;text-align:left;width:auto">That wasn't a valid password.</span>
+        {% endif %}
+        <br>
+        <span>Verify Password</span>
+        <input type="password" name="verify" value="">
+        {% if vpass_frase == True %}
+        <span style="color:red;text-align:left;width:auto">Your passwords didn't match.</span>
+        {% endif %}
+        <br>
+        <span>Email (optional)</span>
+        <input type="text" name="email" value="{{ email }}">
+        {% if email_frase == True %}
+        <span style="color:red;text-align:left;width:auto">That's not a valid email</span>
+        {% endif %}
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>

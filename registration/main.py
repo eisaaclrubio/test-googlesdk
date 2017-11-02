@@ -2,6 +2,7 @@ import webapp2
 import jinja2
 import os
 import re
+import hashlib
 
 from google.appengine.ext import db
 
@@ -26,6 +27,7 @@ class Handler(webapp2.RequestHandler):
 
 class Users(db.Model):
     username = db.StringProperty(required = True)
+    last_modified = db.DateTimeProperty(auto_now = True)
 
 class Signup(Handler):
     def val_usr(self, username):
@@ -71,12 +73,20 @@ class Signup(Handler):
         else:
             a = Users(username = username)
             a.put()
-            self.response.headers.add_header('Set-Cookie', 'username=%s' % str(username))
+            e_id = str(a.key().id())
+            h = hashlib.sha256(e_id).hexdigest()
+            self.response.headers.add_header('Set-Cookie', 'user_id=%s|%s' % (e_id, h))
             self.redirect('/welcome')
 
 class Welcome(Handler):
     def get(self):
-        username = self.request.cookies.get('username')
-        self.render("welcome.html", username = username)
+        usr_id = self.request.cookies.get('user_id').split('|')[0]
+        key = db.Key.from_path('Users', int(usr_id))
+        user = db.get(key)
+
+        if user:
+            self.render("welcome.html", username = user.username)
+        else:
+            self.redirect('/signup')
 
 app = webapp2.WSGIApplication([('/signup', Signup), ('/welcome', Welcome)], debug=True)
